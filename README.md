@@ -17,7 +17,7 @@ run the script, get the same numbers. No paid data, no look-ahead bias.
 
 | File | Description |
 |---|---|
-| `reports/factor-report-2026-09-13.md` | Dated research report (methodology, full ranked table, top/bottom picks, disclaimers) |
+| `reports/factor-report-2026-09-13.md` | Dated research report (methodology, ranked table, top/bottom picks, disclaimers) |
 | `data/factors_2026-09-13.csv` | **Free dataset** — all 68 tickers with every factor and composite score |
 | `launchtower_model.py` | The exact reproducible script that generated the data |
 | `requirements.txt` | Python dependencies |
@@ -106,20 +106,11 @@ adds the complete underlying data behind every score:
 - **JSON + CSV** formats, documented schema, ready to load into pandas
 - **The exact model code** with unit-tested factor computations
 
-### 💳 Buy the full dataset — $29 one-time
-
-**[→ Checkout now (Stripe)](https://buy.stripe.com/test_bJe8wOgLdeMv4SQ5rj7AK3m)**
-
-Direct checkout URL (copy/paste):
-
-```
-https://buy.stripe.com/test_bJe8wOgLdeMv4SQ5rj7AK3m
-```
+**$29 one-time** — [Buy the full dataset →](https://buy.stripe.com/test_fZu5kCbqTcEndpmdXP7AK3k)
 
 > *This is a TEST-mode Stripe checkout link. No real money is collected;
 > test purchases are not real sales. The link is here to demonstrate the
-> monetization infrastructure end-to-end. Test with card
-> `4242 4242 4242 4242`, any future expiry, any CVC.*
+> monetization infrastructure end-to-end.*
 
 ---
 
