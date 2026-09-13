@@ -94,6 +94,26 @@ that's expected and correct.
 
 ---
 
+## Get the full dataset
+
+The free CSV above is the core factor table. The **full LaunchTower dataset**
+adds the complete underlying data behind every score:
+
+- **Full daily price history** (251 trading days) for all 68 tickers
+- **Per-factor percentile ranks** for every ticker (the intermediate math)
+- **Monthly return series** (12 months) per ticker
+- **Drawdown path** data (monthly lows, recovery points)
+- **JSON + CSV** formats, documented schema, ready to load into pandas
+- **The exact model code** with unit-tested factor computations
+
+**$29 one-time** — [Buy the full dataset →](https://buy.stripe.com/test_fZu5kCbqTcEndpmdXP7AK3k)
+
+> *This is a TEST-mode Stripe checkout link. No real money is collected;
+> test purchases are not real sales. The link is here to demonstrate the
+> monetization infrastructure end-to-end.*
+
+---
+
 ## License & disclaimers
 
 - Data © Yahoo Finance. This repo is a research artifact.
