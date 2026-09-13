@@ -94,10 +94,11 @@ that's expected and correct.
 
 ---
 
-## Get the full dataset
+## Get the full dataset subscription
 
-The free CSV above is the core factor table. The **full LaunchTower dataset**
-adds the complete underlying data behind every score:
+The free CSV above is the core factor table. The **LaunchTower Full Dataset
+Subscription** adds the complete underlying data behind every score, refreshed
+on every new report date:
 
 - **Full daily price history** (251 trading days) for all 68 tickers
 - **Per-factor percentile ranks** for every ticker (the intermediate math)
@@ -105,12 +106,16 @@ adds the complete underlying data behind every score:
 - **Drawdown path** data (monthly lows, recovery points)
 - **JSON + CSV** formats, documented schema, ready to load into pandas
 - **The exact model code** with unit-tested factor computations
+- **Every future dated report** as the desk publishes them
 
-**$29 one-time** — [Buy the full dataset →](https://buy.stripe.com/test_fZu5kCbqTcEndpmdXP7AK3k)
+### 💳 Checkout — $49
+
+**[Buy the LaunchTower Full Dataset Subscription →](https://buy.stripe.com/test_4gM3cu3YrfQz2KIg5X7AK3k)**
 
 > *This is a TEST-mode Stripe checkout link. No real money is collected;
-> test purchases are not real sales. The link is here to demonstrate the
-> monetization infrastructure end-to-end.*
+> test purchases are not real sales. Test with card `4242 4242 4242 4242`,
+> any future expiration date, and any CVC. The link is here so the full
+> checkout flow can be exercised end-to-end.*
 
 ---
 
