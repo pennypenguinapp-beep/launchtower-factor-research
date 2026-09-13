@@ -17,7 +17,7 @@ run the script, get the same numbers. No paid data, no look-ahead bias.
 
 | File | Description |
 |---|---|
-| `reports/factor-report-2026-09-13.md` | Dated research report (methodology, ranked table, top/bottom picks, disclaimers) |
+| `reports/factor-report-2026-09-13.md` | Dated research report (methodology, full ranked table, top/bottom picks, disclaimers) |
 | `data/factors_2026-09-13.csv` | **Free dataset** — all 68 tickers with every factor and composite score |
 | `launchtower_model.py` | The exact reproducible script that generated the data |
 | `requirements.txt` | Python dependencies |
