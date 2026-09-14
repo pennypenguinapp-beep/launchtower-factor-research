@@ -1,0 +1,2 @@
+rank,date,ticker,name,close,ret_1m,ret_3m,ret_6m,ret_12m,ann_vol,max_dd_6m,dist_from_52w_high,data_points,start_date,end_date
+1,2026-09-11,MRNA,Moderna, Inc.,0.509225,1.042770,0.322182,78.16
