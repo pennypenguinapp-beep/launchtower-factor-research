@@ -1,71 +1,125 @@
-# LaunchTower Factor Research
+# LaunchTower — Momentum + Quality Factor Research
 
-**Independent market-data desk.** Reproducible momentum + quality factor model on US large caps.
+**Dated research report + free, reproducible market data.**
 
-> Research & education only — **not** investment advice.
+LaunchTower is a research desk that computes a transparent **momentum + quality**
+factor score on a 68 large-cap US equity universe using **real, free, public
+market data** (Yahoo Finance via `yfinance`). Everything here is reproducible:
+run the script, get the same numbers. No paid data, no look-ahead bias.
 
-## Latest report: 2026-09-11
+> **This is a research report, not financial advice.** Factor scores are computed
+> from historical data and do not guarantee future performance. Verify independently
+> before making any investment decision.
 
-- **Universe:** 60 US large caps
-- **Model:** Momentum + Quality composite
-  - Momentum (50%): 12-month return excluding most recent month (12-1), z-scored
-  - Secondary momentum (20%): 6-month return, z-scored
-  - Quality (30%): equal-weight z-scores of ROE, profit margins, inverse debt/equity (median-imputed)
-  - Composite = 0.5·mom₁₂₋₁ + 0.2·mom₆ + 0.3·quality (higher = preferred)
-- **Data:** Yahoo Finance daily closes (auto-adjusted), 252 trading days; fundamentals from Yahoo Ticker.info.
-- **Risk overlays:** annualized volatility and 12-month max drawdown (context only, not in score).
+---
 
-## Top 10 (highest composite score)
+## What's in this repo
 
-| Ticker | Sector | 12-1 Mo | 6M | Ann Vol | ROE | Margin | Score |
-|---|---|---|---|---|---|---|---|
-| MU | Technology | +532% | +112% | 82% | 67% | 56% | +3.51 |
-| INTC | Technology | +325% | +125% | 79% | -11% | -20% | +1.81 |
-| AMD | Technology | +210% | +174% | 72% | 10% | 16% | +1.70 |
-| AMAT | Technology | +216% | +70% | 60% | 41% | 30% | +1.33 |
-| KLAC | Technology | +119% | +58% | 60% | 87% | 36% | +0.82 |
-| ASML | Technology | +131% | +35% | 46% | 54% | 30% | +0.73 |
-| PANW | Technology | +100% | +112% | 45% | 2% | 3% | +0.68 |
-| CRWD | Technology | +108% | +87% | 54% | 1% | 1% | +0.58 |
-| TSM | Technology | +68% | +25% | 40% | 40% | 50% | +0.40 |
-| NVDA | Technology | +27% | +18% | 38% | 117% | 64% | +0.38 |
+| File | Description |
+|---|---|
+| `reports/factor-report-2026-09-13.md` | Dated research report (methodology, full ranked table, top/bottom picks, disclaimers) |
+| `data/factors_2026-09-13.csv` | **Free dataset** — all 68 tickers with every factor and composite score |
+| `launchtower_model.py` | The exact reproducible script that generated the data |
+| `requirements.txt` | Python dependencies |
 
-## Bottom 10 (lowest composite score)
+## The free dataset
 
-| Ticker | Sector | 12-1 Mo | 6M | Ann Vol | ROE | Margin | Score |
-|---|---|---|---|---|---|---|---|
-| BSX | Healthcare | -50% | -38% | 38% | 15% | 17% | -0.84 |
-| ORCL | Technology | -49% | -14% | 57% | 41% | 26% | -0.75 |
-| GILD | Healthcare | +20% | -9% | 27% | -21% | -11% | -0.67 |
-| NOW | Technology | -32% | -8% | 57% | 14% | 11% | -0.64 |
-| BA | Industrials | +5% | +4% | 34% | 174% | 3% | -0.62 |
-| NFLX | Communication Services | -35% | -23% | 36% | 50% | 28% | -0.55 |
-| CRM | Technology | -18% | -13% | 47% | 19% | 22% | -0.54 |
-| SYK | Healthcare | -11% | -6% | 29% | 17% | 14% | -0.48 |
-| TSLA | Consumer Cyclical | -8% | +1% | 47% | 5% | 4% | -0.48 |
-| DIS | Communication Services | -9% | -1% | 26% | 8% | 9% | -0.48 |
+`data/factors_2026-09-13.csv` — 68 rows, 14 columns:
 
-## Key observations
-- Top decile is dominated by **semiconductors / AI infrastructure** (MU, INTC, AMD, AMAT, KLAC, ASML, TSM).
-- **NVDA** is mid-table: excellent quality (ROE ~117%, margin ~64%) but modest 12-1 momentum (+27%) — the momentum/quality trade-off.
-- Bottom decile mixes negative-momentum names (ORCL, BSX, NOW) with low-quality profiles (GILD negative ROE).
-- Volatility is elevated across the top decile (59–82% ann.) — position sizing should reflect this.
-
-## Reproduce
-```bash
-pip install yfinance pandas numpy
-# download the 60-ticker universe, apply the exact formulas above
 ```
-All inputs are public and dated; re-running on any later date regenerates the report.
+rank, ticker, close_price, ret_1m, ret_3m, ret_6m, ret_12m,
+ann_vol, max_dd_6m, skew_6m, data_points, start_date, end_date, composite_score
+```
 
-## Files
-- `data/launchtower-factor-scores-2026-09-11.csv` — full factor scores (all 60 tickers)
-- `reports/launchtower-factor-report-2026-09-11.md` — full dated report
+- **Universe:** 68 liquid large-cap US equities
+- **Data window:** 251 trading days, 2025-09-12 → 2026-09-11
+- **Source:** Yahoo Finance (auto-adjusted daily closes)
 
-## Risk & disclaimers
-- **Research note, not investment advice.** Scores are cross-sectional ranks, not probability estimates.
-- Momentum signals can reverse abruptly; quality imputation (median debt/equity) affects a few names.
-- No transaction costs, liquidity, or correlation constraints are modeled.
-- Data as of 2026-09-11; re-run the pipeline for current values.
+### Top 10 (highest composite score)
 
-*LaunchTower — independent market-data desk. All data © Yahoo Finance, used for research.*
+| Rank | Ticker | 6M | 12M | Ann Vol | Score |
+|---|---|---|---|---|---|
+| 1 | HPQ | +91.4% | +33.3% | 52.5% | 75.0 |
+| 2 | SNOW | +85.6% | +48.8% | 78.1% | 73.7 |
+| 3 | DELL | +280.2% | +359.5% | 88.8% | 70.8 |
+| 4 | CRM | +24.9% | +2.9% | 55.9% | 69.3 |
+| 5 | MSFT | +23.8% | -2.0% | 37.7% | 68.9 |
+| 6 | CRWD | +87.3% | +89.6% | 61.7% | 66.1 |
+| 7 | ABNB | +33.3% | +38.9% | 39.9% | 65.3 |
+| 8 | HOOD | +47.9% | -2.1% | 73.4% | 64.9 |
+| 9 | PANW | +96.7% | +68.4% | 54.8% | 64.3 |
+| 10 | MRK | +26.0% | +79.6% | 32.3% | 64.0 |
+
+### Bottom 5 (weakest composite score)
+
+| Rank | Ticker | 6M | 12M | Score |
+|---|---|---|---|---|
+| 64 | IBM | -0.3% | -1.5% | 30.9 |
+| 65 | WMT | -14.0% | +4.4% | 29.6 |
+| 66 | TSLA | -7.5% | -7.7% | 29.4 |
+| 67 | HON | -16.6% | -1.3% | 26.9 |
+| 68 | NKE | -30.7% | -47.9% | 23.9 |
+
+---
+
+## Methodology
+
+**Factors (trailing windows, per ticker):**
+
+| Factor | Window | Weight | Direction |
+|---|---|---|---|
+| 6-month return (momentum) | 126 trading days | 35% | higher is better |
+| 3-month return (short momentum) | 63 trading days | 20% | higher is better |
+| Annualized volatility (quality proxy) | 126 trading days | 20% | lower is better (inverted) |
+| Max drawdown (quality proxy) | 126 trading days | 15% | shallower is better (inverted) |
+| Return skewness (tail quality) | 126 trading days | 10% | higher is better |
+
+**Composite score** = weighted sum of cross-sectional percentile ranks (0–100).
+Each factor is ranked across the 68-ticker universe, then combined with the
+weights above. Inverted factors (volatility, drawdown) reward lower risk.
+
+**No look-ahead bias:** every factor uses only trailing data available at the
+report date.
+
+## Reproduce it
+
+```bash
+pip install -r requirements.txt
+python launchtower_model.py
+```
+
+This re-pulls live data from Yahoo Finance and writes a fresh
+`factors_<today>.csv`. Numbers will differ slightly as new trading days close —
+that's expected and correct.
+
+---
+
+## Get the full dataset
+
+The free CSV above is the core factor table. The **full LaunchTower dataset**
+adds the complete underlying data behind every score:
+
+- **Full daily price history** (251 trading days) for all 68 tickers
+- **Per-factor percentile ranks** for every ticker (the intermediate math)
+- **Monthly return series** (12 months) per ticker
+- **Drawdown path** data (monthly lows, recovery points)
+- **JSON + CSV** formats, documented schema, ready to load into pandas
+- **The exact model code** with unit-tested factor computations
+
+**$29 one-time** — [Buy the full dataset →](https://buy.stripe.com/test_fZu5kCbqTcEndpmdXP7AK3k)
+
+> *This is a TEST-mode Stripe checkout link. No real money is collected;
+> test purchases are not real sales. The link is here to demonstrate the
+> monetization infrastructure end-to-end.*
+
+---
+
+## License & disclaimers
+
+- Data © Yahoo Finance. This repo is a research artifact.
+- **Not financial advice.** Not a solicitation. LaunchTower does not manage
+  client funds and does not sell financial advice.
+- Momentum strategies can experience sharp reversals. Past performance is not
+  indicative of future results.
+
+*Generated by the LaunchTower research desk.*
